@@ -1,1 +1,7 @@
-{}
+{
+  "private": true,
+  "scripts": {
+  },
+  "devDependencies": {
+  }
+}
