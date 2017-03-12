@@ -1,6 +1,3 @@
-/// <reference path="../typings/index.d.ts" />
-
-//noinspection JSUnusedGlobalSymbols
-export function loop() {
+module.exports.loop = () => {
     console.log('tick');
-}
+};
