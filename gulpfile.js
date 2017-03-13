@@ -9,7 +9,6 @@ const clean = require('gulp-clean')
     , tslint = require('gulp-tslint');
 
 const tsProject = ts.createProject('tsconfig.json', {typescript: require('typescript')});
-const config = require('./config.json');
 
 gulp.task('lint', () => {
     return gulp.src('./src/**/*.ts')
@@ -39,6 +38,8 @@ gulp.task('dist', ['build'], () => {
 });
 
 gulp.task('upload', ['dist'], () => {
+    const config = require('./config.json');
+
     return gulp.src('./dist/*.js')
         .pipe(screeps(config));
 });
