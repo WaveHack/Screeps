@@ -1,7 +1,7 @@
 export class Upgrader {
 
     static Run(creep: Creep) {
-        if (creep.store.getFreeCapacity() > 0) {
+        if (creep.store[RESOURCE_ENERGY] === 0) {
             const sources = creep.room.find(FIND_SOURCES);
             const targetSource = sources[0];
 
