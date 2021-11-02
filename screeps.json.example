@@ -1,0 +1,9 @@
+{
+    "email": "",
+    "password": "",
+    "protocol": "https",
+    "hostname": "screeps.com",
+    "port": 443,
+    "path": "/",
+    "branch": "auto"
+}

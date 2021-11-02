@@ -1,9 +1,0 @@
-{
-  "email": "",
-  "password": "",
-  "branch": "default",
-  "ptr": false,
-  "host": "screeps.com",
-  "port": 443,
-  "secure": true
-}
