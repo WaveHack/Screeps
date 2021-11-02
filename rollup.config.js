@@ -22,7 +22,7 @@ export default {
         resolve({rootDir: 'src'}),
         commonjs(),
         typescript({tsconfig: './tsconfig.json'}),
-        screeps({config: cfg, dryRun: true}),
+        screeps({config: cfg, dryRun: false}),
     ],
 
 }
