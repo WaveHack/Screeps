@@ -66,6 +66,11 @@
   dependencies:
     "@types/node" "*"
 
+"@types/screeps@^3.2.4":
+  version "3.2.4"
+  resolved "https://registry.yarnpkg.com/@types/screeps/-/screeps-3.2.4.tgz#7a52d57c920e16f52f853cf4c55a1f603457c78d"
+  integrity sha512-itlqAHdAZ2ZkDFERy3TkmmMIisSXT7tXfEnhhl5N7xNZbNmNs/qgGfCIRchPLIFj0w5EPpj6JurKZ3vpSxaNiQ==
+
 argparse@^1.0.7:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/argparse/-/argparse-1.0.10.tgz#bcd6791ea5ae09725e17e5ad988134cd40b3d911"
