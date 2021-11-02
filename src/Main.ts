@@ -1,16 +1,12 @@
 import {Harvester} from "./Roles/Harvester";
 import {Upgrader} from "./Roles/Upgrader";
 import {Builder} from "./Roles/Builder";
+import {MemoryManager} from "./Managers/MemoryManager";
 
 //noinspection JSUnusedGlobalSymbols
 export function loop() {
 
-    for (const name in Memory.creeps) {
-        if (!Game.creeps[name]) {
-            delete Memory.creeps[name];
-            console.log(`Clearing non-existing creep memory: ${name}`);
-        }
-    }
+    MemoryManager.CleanupInactiveCreeps();
 
     const spawn = Game.spawns['Spawn1'];
 
