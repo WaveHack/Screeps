@@ -1,9 +1,9 @@
 {
-    "email": "",
-    "password": "",
-    "protocol": "https",
-    "hostname": "screeps.com",
-    "port": 443,
+    "username": "",
+    "token": "",
+    "protocol": "http",
+    "hostname": "example.com",
+    "port": 21025,
     "path": "/",
     "branch": "auto"
 }
