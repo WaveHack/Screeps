@@ -12,7 +12,10 @@ export function loop() {
 
     for (const name in Game.creeps) {
         const creep = Game.creeps[name];
-        Harvester.Run(creep);
+
+        if (creep.memory.role === 'harvester') {
+            Harvester.Run(creep);
+        }
     }
 
 }
