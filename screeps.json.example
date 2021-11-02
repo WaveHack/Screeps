@@ -1,8 +1,8 @@
 {
-    "username": "",
-    "token": "",
+    "email": "",
+    "password": "",
     "protocol": "http",
-    "hostname": "example.com",
+    "hostname": "screeps.com",
     "port": 21025,
     "path": "/",
     "branch": "auto"
