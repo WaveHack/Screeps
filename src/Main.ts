@@ -1,46 +1,10 @@
-import {Harvester} from "./Roles/Harvester";
-import {Upgrader} from "./Roles/Upgrader";
-import {Builder} from "./Roles/Builder";
 import {MemoryManager} from "./Managers/MemoryManager";
 import {CreepManager} from "./Managers/CreepManager";
+import {SpawnManager} from "./Managers/SpawnManager";
 
 //noinspection JSUnusedGlobalSymbols
 export function loop() {
-
     MemoryManager.CleanupInactiveCreeps();
-
-    const spawn = Game.spawns['Spawn1'];
-
-    const harvesters = _.filter(Game.creeps, creep => creep.memory.role === 'harvester');
-    const upgraders = _.filter(Game.creeps, creep => creep.memory.role === 'upgrader');
-    const builders = _.filter(Game.creeps, creep => creep.memory.role === 'builder');
-
-    if (!spawn.spawning) {
-        if (harvesters.length < 2) {
-            const newName = ('Harvester' + Game.time);
-
-            if (spawn.spawnCreep([WORK, CARRY, MOVE], newName,  {memory: {role: 'harvester', task: 'harvest'}}) === OK) {
-                console.log(`Spawning new Harvester: ${newName}`);
-            }
-        }
-
-        if (builders.length < 3) {
-            const newName = ('Builder' + Game.time);
-
-            if (spawn.spawnCreep([WORK, CARRY, MOVE], newName, {memory: {role: 'builder', task: 'harvest'}}) === OK) {
-                console.log(`Spawning new Builder: ${newName}`);
-            }
-        }
-
-        if (upgraders.length < 6) {
-            const newName = ('Upgrader' + Game.time);
-
-            if (spawn.spawnCreep([WORK, CARRY, MOVE], newName, {memory: {role: 'upgrader', task: 'harvest'}}) === OK) {
-                console.log(`Spawning new Upgrader: ${newName}`);
-            }
-        }
-    }
-
+    SpawnManager.SpawnCreeps();
     CreepManager.RunCreeps();
-
 }
