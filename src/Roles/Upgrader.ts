@@ -12,8 +12,11 @@ export class Upgrader {
 
         switch (creep.memory.task) {
             case 'harvest':
-                const sources = creep.room.find(FIND_SOURCES);
-                const targetSource = sources[0];
+                const targetSource = creep.pos.findClosestByPath(FIND_SOURCES);
+
+                if (targetSource === null) {
+                    return;
+                }
 
                 if (creep.harvest(targetSource) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(targetSource, {visualizePathStyle: {stroke: '#ffaa00'}});
