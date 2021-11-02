@@ -1,6 +1,13 @@
+# IDEs
 /.idea/
+
+# Package Managers
+/node_modules/
+
+# Generated files
 /build/
 /dist/
-/node_modules/
 /typings/
-/config.json
+
+# Manual files
+/screeps.json
