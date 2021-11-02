@@ -27,7 +27,7 @@ export function loop() {
             }
         }
 
-        if (builders.length < 2) {
+        if (builders.length < 3) {
             const newName = ('Builder' + Game.time);
 
             if (spawn.spawnCreep([WORK, CARRY, MOVE], newName, {memory: {role: 'builder', task: 'harvest'}}) === OK) {
@@ -35,7 +35,7 @@ export function loop() {
             }
         }
 
-        if (upgraders.length < 4) {
+        if (upgraders.length < 6) {
             const newName = ('Upgrader' + Game.time);
 
             if (spawn.spawnCreep([WORK, CARRY, MOVE], newName, {memory: {role: 'upgrader', task: 'harvest'}}) === OK) {
