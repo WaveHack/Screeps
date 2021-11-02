@@ -1,7 +1,7 @@
 declare global {
 
     interface CreepMemory {
-        role: 'harvester';
+        role: string;
     }
 
 }

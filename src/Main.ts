@@ -1,4 +1,5 @@
 import {Harvester} from "./Roles/Harvester";
+import {Upgrader} from "./Roles/Upgrader";
 
 //noinspection JSUnusedGlobalSymbols
 export function loop() {
@@ -15,6 +16,10 @@ export function loop() {
 
         if (creep.memory.role === 'harvester') {
             Harvester.Run(creep);
+        }
+
+        if (creep.memory.role === 'upgrader') {
+            Upgrader.Run(creep);
         }
     }
 
