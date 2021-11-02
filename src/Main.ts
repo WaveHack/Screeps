@@ -25,7 +25,7 @@ export function loop() {
             }
         }
 
-        if (upgraders.length < 5) {
+        if (upgraders.length < 4) {
             const newName = ('Upgrader' + Game.time);
 
             if (spawn.spawnCreep([WORK, CARRY, MOVE], newName, {memory: {role: 'upgrader', task: 'harvest'}}) === OK) {
