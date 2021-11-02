@@ -11,8 +11,10 @@ export class Harvester {
         } else {
             const targetSpawn = Game.spawns['Spawn1'];
 
-            if (creep.transfer(targetSpawn, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(targetSpawn);
+            if (targetSpawn.store[RESOURCE_ENERGY] < targetSpawn.store.getCapacity(RESOURCE_ENERGY)) {
+                if (creep.transfer(targetSpawn, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(targetSpawn);
+                }
             }
         }
     }
