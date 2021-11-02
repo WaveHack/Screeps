@@ -1,14 +1,5 @@
 {
   "private": true,
   "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-clean": "^0.3.2",
-    "gulp-dot-flatten": "^1.1.1",
-    "gulp-screeps": "^1.0.3",
-    "gulp-tslint": "^7.1.0",
-    "gulp-typescript": "^3.1.5",
-    "gulp-util": "^3.0.8",
-    "tslint": "^4.5.1",
-    "typescript": "^2.2.1"
   }
 }
