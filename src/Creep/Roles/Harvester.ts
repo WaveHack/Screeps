@@ -6,7 +6,7 @@ export class Harvester implements Role {
 
     public id: string = 'harvester';
 
-    public name: string = 'HARV-';
+    public name: string = 'HAR-';
 
     public body: BodyPartConstant[] = [WORK, CARRY, MOVE];
 
