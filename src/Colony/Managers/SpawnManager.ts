@@ -11,9 +11,10 @@ export class SpawnManager {
             return;
         }
 
-        const harvesters = _.filter(Game.creeps, creep => creep.memory.role === 'harvester');
-        const upgraders = _.filter(Game.creeps, creep => creep.memory.role === 'upgrader');
         const builders = _.filter(Game.creeps, creep => creep.memory.role === 'builder');
+        const harvesters = _.filter(Game.creeps, creep => creep.memory.role === 'harvester');
+        const maintainers = _.filter(Game.creeps, creep => creep.memory.role === 'maintainer');
+        const upgraders = _.filter(Game.creeps, creep => creep.memory.role === 'upgrader');
 
         if (harvesters.length < 2) {
             const newName = ('Harvester' + Game.time);
@@ -34,6 +35,15 @@ export class SpawnManager {
                     console.log(`Spawning new Builder: ${newName}`);
                     return;
                 }
+            }
+        }
+
+        if (maintainers.length < 2) {
+            const newName = ('Maintainer' + Game.time);
+
+            if (spawn.spawnCreep([WORK, CARRY, MOVE], newName,  {memory: {role: 'maintainer', task: 'harvest'}}) === OK) {
+                console.log(`Spawning new Maintainer: ${newName}`);
+                return;
             }
         }
 
