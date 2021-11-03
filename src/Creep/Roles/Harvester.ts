@@ -24,7 +24,7 @@ export class Harvester {
                 break;
 
             case 'deliver':
-                const targetPriority: StructureConstant[] = [
+                const eligibleTargets: StructureConstant[] = [
                     STRUCTURE_SPAWN,
                     STRUCTURE_EXTENSION,
                     STRUCTURE_CONTAINER,
@@ -33,12 +33,12 @@ export class Harvester {
                 const targets = creep.room.find(FIND_STRUCTURES, {
                     filter: structure => {
                         return (
-                            (structure instanceof StructureContainer) &&
-                            targetPriority.includes(structure.structureType) &&
+                            eligibleTargets.includes(structure.structureType) &&
+                            ('store' in structure) &&
                             (structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
                         )
                     }
-                }).sort((a, b) => targetPriority.indexOf(a.structureType) - targetPriority.indexOf(b.structureType));
+                }).sort((a, b) => eligibleTargets.indexOf(a.structureType) - eligibleTargets.indexOf(b.structureType));
 
                 if (targets.length === 0) {
                     const spawn = Game.spawns['Spawn1'];
