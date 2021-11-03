@@ -20,7 +20,7 @@ export class SpawnManager {
             const newName = ('Harvester' + Game.time);
 
             if (spawn.spawnCreep([WORK, CARRY, MOVE], newName,  {memory: {role: 'harvester', task: 'harvest'}}) === OK) {
-                console.log(`Spawning new Harvester: ${newName}`);
+                console.info(`Spawning new Harvester: ${newName}`);
                 return;
             }
         }
@@ -32,7 +32,7 @@ export class SpawnManager {
                 const newName = ('Builder' + Game.time);
 
                 if (spawn.spawnCreep([WORK, CARRY, MOVE], newName, {memory: {role: 'builder', task: 'harvest'}}) === OK) {
-                    console.log(`Spawning new Builder: ${newName}`);
+                    console.info(`Spawning new Builder: ${newName}`);
                     return;
                 }
             }
@@ -42,7 +42,7 @@ export class SpawnManager {
             const newName = ('Maintainer' + Game.time);
 
             if (spawn.spawnCreep([WORK, CARRY, MOVE], newName,  {memory: {role: 'maintainer', task: 'harvest'}}) === OK) {
-                console.log(`Spawning new Maintainer: ${newName}`);
+                console.info(`Spawning new Maintainer: ${newName}`);
                 return;
             }
         }
@@ -51,7 +51,7 @@ export class SpawnManager {
             const newName = ('Upgrader' + Game.time);
 
             if (spawn.spawnCreep([WORK, CARRY, MOVE], newName, {memory: {role: 'upgrader', task: 'harvest'}}) === OK) {
-                console.log(`Spawning new Upgrader: ${newName}`);
+                console.info(`Spawning new Upgrader: ${newName}`);
                 return;
             }
         }
