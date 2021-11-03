@@ -22,7 +22,7 @@ export class SpawnManager {
             return this.SpawnCreep(new Harvester());
         }
 
-        if (builders.length < 3) {
+        if (builders.length < 2) {
             const sites = spawn.room.find(FIND_MY_CONSTRUCTION_SITES);
 
             if (sites.length > 0) {
