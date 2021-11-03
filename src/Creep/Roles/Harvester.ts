@@ -24,6 +24,12 @@ export class Harvester {
                 break;
 
             case 'deliver':
+                const targetPriority: StructureConstant[] = [
+                    STRUCTURE_SPAWN,
+                    STRUCTURE_EXTENSION,
+                    STRUCTURE_CONTAINER,
+                ];
+
                 const targets = creep.room.find(FIND_STRUCTURES, {
                     filter: structure => {
                         return (
@@ -35,7 +41,7 @@ export class Harvester {
                             && (structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
                         )
                     }
-                })
+                }).sort((a, b) => targetPriority.indexOf(a.structureType) - targetPriority.indexOf(b.structureType));
 
                 if (targets.length === 0) {
                     const spawn = Game.spawns['Spawn1'];
@@ -43,7 +49,7 @@ export class Harvester {
                     return;
                 }
 
-                var target = targets[0];
+                const target = targets[0];
 
                 if (creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                     creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
