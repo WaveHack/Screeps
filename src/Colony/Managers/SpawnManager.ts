@@ -1,7 +1,7 @@
 import {Builder} from "../../Creep/Roles/Builder";
 import {Upgrader} from "../../Creep/Roles/Upgrader";
 import {Role} from "../../Creep/Roles/Role";
-import {HarvesterNew} from "../../Creep/Roles/HarvesterNew";
+import {Harvester} from "../../Creep/Roles/Harvester";
 
 export class SpawnManager {
 
@@ -18,7 +18,7 @@ export class SpawnManager {
         const upgraders = _.filter(Game.creeps, creep => creep.memory.role === 'upgrader');
 
         if (harvesters.length < 2) {
-            return this.SpawnCreep(new HarvesterNew());
+            return this.SpawnCreep(new Harvester());
         }
 
         if (builders.length < 3) {

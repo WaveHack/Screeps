@@ -66,9 +66,6 @@ export class StateManager {
             case 'builder':
                 Builder.Run(creep);
                 break;
-            case 'harvester':
-                Harvester.Run(creep);
-                break;
             case 'maintainer':
                 Maintainer.Run(creep);
                 break;
