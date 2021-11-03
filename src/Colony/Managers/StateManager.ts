@@ -1,6 +1,3 @@
-import {Builder} from "../../Creep/Roles/Builder";
-import {Harvester} from "../../Creep/Roles/Harvester";
-import {Maintainer} from "../../Creep/Roles/Maintainer";
 import {Upgrader} from "../../Creep/Roles/Upgrader";
 import {State} from "../../Creep/States/State";
 import {HarvestEnergy} from "../../Creep/States/HarvestEnergy";
@@ -8,6 +5,7 @@ import {DeliverEnergy} from "../../Creep/States/DeliverEnergy";
 import {ConstructBuilding} from "../../Creep/States/ConstructBuilding";
 import {GatherEnergy} from "../../Creep/States/GatherEnergy";
 import {RepairStructure} from "../../Creep/States/RepairStructure";
+import {UpgradeController} from "../../Creep/States/UpgradeController";
 
 export class StateManager {
 
@@ -17,6 +15,7 @@ export class StateManager {
         new GatherEnergy(),
         new HarvestEnergy(),
         new RepairStructure(),
+        new UpgradeController(),
     ];
 
     private static statesById: { [key: string]: State } = {};
@@ -57,22 +56,8 @@ export class StateManager {
         }
     }
 
-    public static TickNew(creep: Creep): void {
-        this.GetState(creep)?.Tick(creep);
-    }
-
     public static Tick(creep: Creep): void {
-        // new FSM-based state ticking
-        if ('states' in creep.memory && creep.memory.states.length > 0) {
-            this.TickNew(creep);
-            return;
-        }
-
-        switch (creep.memory.role) {
-            case 'upgrader':
-                Upgrader.Run(creep);
-                break;
-        }
+        this.GetState(creep)?.Tick(creep);
     }
 
 }

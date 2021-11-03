@@ -1,38 +1,15 @@
-export class Upgrader {
+import {Role} from "./Role";
+import {State} from "../States/State";
+import {UpgradeController} from "../States/UpgradeController";
 
-    public static Run(creep: Creep) {
+export class Upgrader implements Role {
 
-        if ((creep.memory.task === 'harvest') && (creep.store.getFreeCapacity() === 0)) {
-            creep.memory.task = 'upgrade';
-        }
+    public id: string = 'upgrader';
 
-        if ((creep.memory.task === 'upgrade') && (creep.store[RESOURCE_ENERGY] === 0)) {
-            creep.memory.task = 'harvest';
-        }
+    public name: string = 'UPG-';
 
-        switch (creep.memory.task) {
-            case 'harvest':
-                const source = creep.pos.findClosestByPath(FIND_SOURCES);
+    public body: BodyPartConstant[] = [WORK, CARRY, MOVE];
 
-                if (source === null) {
-                    return;
-                }
-
-                if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(source, {visualizePathStyle: {stroke: '#ffaa00'}});
-                }
-                break;
-
-            case 'upgrade':
-                const targetController = creep.room.controller;
-
-                if (targetController !== undefined) {
-                    if (creep.upgradeController(targetController) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(targetController, {visualizePathStyle: {stroke: '#ffffff'}});
-                    }
-                }
-                break;
-        }
-    }
+    public initialState: State = new UpgradeController();
 
 }
