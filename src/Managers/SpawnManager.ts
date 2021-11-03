@@ -7,7 +7,7 @@ export class SpawnManager {
     static spawn: StructureSpawn = Game.spawns['Spawn1'];
 
     static SpawnCreeps(): void {
-        if (this.spawn.spawning) {
+        if (this.spawn.spawning !== null) {
             return;
         }
 
@@ -37,7 +37,7 @@ export class SpawnManager {
             }
         }
 
-        if (upgraders.length < 6) {
+        if (upgraders.length < 5) {
             const newName = ('Upgrader' + Game.time);
 
             if (this.spawn.spawnCreep([WORK, CARRY, MOVE], newName, {memory: {role: 'upgrader', task: 'harvest'}}) === OK) {
