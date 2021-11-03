@@ -31,13 +31,11 @@ export class Harvester {
                 ];
 
                 const targets = creep.room.find(FIND_STRUCTURES, {
-                    filter: structure => {
-                        return (
-                            eligibleTargets.includes(structure.structureType) &&
-                            ('store' in structure) &&
-                            (structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
-                        )
-                    }
+                    filter: structure => (
+                        eligibleTargets.includes(structure.structureType) &&
+                        ('store' in structure) &&
+                        (structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
+                    )
                 }).sort((a, b) => eligibleTargets.indexOf(a.structureType) - eligibleTargets.indexOf(b.structureType));
 
                 if (targets.length === 0) {
