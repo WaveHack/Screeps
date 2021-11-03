@@ -7,7 +7,7 @@ export class ConstructBuilding implements State {
 
     public Tick(creep: Creep): void {
         if (creep.store[RESOURCE_ENERGY] === 0) {
-            return StateManager.PushState(creep, 'harvest_energy');
+            return StateManager.PushState(creep, 'gather_energy');
         }
 
         const sites = creep.room.find(FIND_MY_CONSTRUCTION_SITES);
