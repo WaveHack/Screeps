@@ -2,8 +2,8 @@ declare global {
 
     interface CreepMemory {
         role: string;
-        /** @deprecated Refactor to 'state' */ task: string;
-        state: string;
+        /** @deprecated Refactor to 'states' */ task?: string;
+        states: string[];
     }
 
 }

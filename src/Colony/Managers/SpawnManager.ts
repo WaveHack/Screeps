@@ -1,6 +1,7 @@
 import {Builder} from "../../Creep/Roles/Builder";
-import {Harvester} from "../../Creep/Roles/Harvester";
 import {Upgrader} from "../../Creep/Roles/Upgrader";
+import {Role} from "../../Creep/Roles/Role";
+import {HarvesterNew} from "../../Creep/Roles/HarvesterNew";
 
 export class SpawnManager {
 
@@ -17,12 +18,7 @@ export class SpawnManager {
         const upgraders = _.filter(Game.creeps, creep => creep.memory.role === 'upgrader');
 
         if (harvesters.length < 2) {
-            const newName = ('Harvester' + Game.time);
-
-            if (spawn.spawnCreep([WORK, CARRY, MOVE], newName,  {memory: {role: 'harvester', task: 'harvest'}}) === OK) {
-                console.log(`INFO: Spawning new Harvester: ${newName}`);
-                return;
-            }
+            return this.SpawnCreep(new HarvesterNew());
         }
 
         if (builders.length < 3) {
@@ -31,7 +27,7 @@ export class SpawnManager {
             if (sites.length > 0) {
                 const newName = ('Builder' + Game.time);
 
-                if (spawn.spawnCreep([WORK, CARRY, MOVE], newName, {memory: {role: 'builder', task: 'harvest'}}) === OK) {
+                if (spawn.spawnCreep([WORK, CARRY, MOVE], newName, {memory: {role: 'builder', task: 'harvest', states: []}}) === OK) {
                     console.log(`INFO: Spawning new Builder: ${newName}`);
                     return;
                 }
@@ -41,7 +37,7 @@ export class SpawnManager {
         if (maintainers.length < 2) {
             const newName = ('Maintainer' + Game.time);
 
-            if (spawn.spawnCreep([WORK, CARRY, MOVE], newName,  {memory: {role: 'maintainer', task: 'harvest'}}) === OK) {
+            if (spawn.spawnCreep([WORK, CARRY, MOVE], newName,  {memory: {role: 'maintainer', task: 'harvest', states: []}}) === OK) {
                 console.log(`INFO: Spawning new Maintainer: ${newName}`);
                 return;
             }
@@ -50,10 +46,26 @@ export class SpawnManager {
         if (upgraders.length < 5) {
             const newName = ('Upgrader' + Game.time);
 
-            if (spawn.spawnCreep([WORK, CARRY, MOVE], newName, {memory: {role: 'upgrader', task: 'harvest'}}) === OK) {
+            if (spawn.spawnCreep([WORK, CARRY, MOVE], newName, {memory: {role: 'upgrader', task: 'harvest', states: []}}) === OK) {
                 console.log(`INFO: Spawning new Upgrader: ${newName}`);
                 return;
             }
+        }
+    }
+
+    private static SpawnCreep(role: Role): void {
+        const spawn = Game.spawns['Spawn1'];
+        const name = (role.name + Game.time);
+
+        const result = spawn.spawnCreep(role.body, name, {
+            memory: {
+                role: role.id,
+                states: [role.initialState.id],
+            }
+        });
+
+        if (result === OK) {
+            console.log(`INFO: Spawning new ${role.name}: ${name}`);
         }
     }
 
