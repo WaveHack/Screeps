@@ -16,6 +16,7 @@ export class DeliverEnergy implements State {
             STRUCTURE_CONTAINER,
         ];
 
+        // todo: refactor to findClosestByPath
         const targets = creep.room.find(FIND_STRUCTURES, {
             filter: structure => (
                 eligibleTargets.includes(structure.structureType) &&
