@@ -18,7 +18,7 @@ export class SpawnManager {
         const maintainers = _.filter(Game.creeps, creep => creep.memory.role === 'maintainer');
         const upgraders = _.filter(Game.creeps, creep => creep.memory.role === 'upgrader');
 
-        if (harvesters.length < 2) {
+        if (harvesters.length < 4) {
             return this.SpawnCreep(new Harvester());
         }
 
