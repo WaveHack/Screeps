@@ -31,6 +31,8 @@ export class Harvester {
                 })
 
                 if (targets.length === 0) {
+                    const spawn = Game.spawns['Spawn1'];
+                    creep.moveTo(spawn, {visualizePathStyle: {stroke: '#ff0000'}});
                     return;
                 }
 
