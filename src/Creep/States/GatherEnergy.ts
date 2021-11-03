@@ -22,10 +22,14 @@ export class GatherEnergy implements State {
             )
         });
 
-        // No more free energy in containers. Harvest some instead!
         if (source === null) {
+            // Use remaining energy
+            if (creep.store[RESOURCE_ENERGY] > 0) {
+                return StateManager.PopState(creep);
+            }
+
             return;
-            // return StateManager.PushState(creep, 'harvest_energy');
+            //return StateManager.PushState(creep, 'harvest_energy');
         }
 
         if (creep.withdraw(source, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
