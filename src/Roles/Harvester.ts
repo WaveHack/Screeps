@@ -21,13 +21,24 @@ export class Harvester {
                 break;
 
             case 'deliver':
-                const targetSpawn = Game.spawns['Spawn1'];
-
-                // if (targetSpawn.store[RESOURCE_ENERGY] < targetSpawn.store.getCapacity(RESOURCE_ENERGY)) {
-                    if (creep.transfer(targetSpawn, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
-                        creep.moveTo(targetSpawn, {visualizePathStyle: {stroke: '#ffffff'}});
+                const targets = creep.room.find(FIND_STRUCTURES, {
+                    filter: structure => {
+                        return (
+                            ((structure.structureType === STRUCTURE_SPAWN) || (structure.structureType === STRUCTURE_EXTENSION))
+                            && (structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0)
+                        )
                     }
-                // }
+                })
+
+                if (targets.length === 0) {
+                    return;
+                }
+
+                var target = targets[0];
+
+                if (creep.transfer(target, RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
+                }
                 break;
         }
     }
