@@ -1,42 +1,15 @@
-export class Builder {
+import {Role} from "./Role";
+import {State} from "../States/State";
+import {ConstructBuilding} from "../States/ConstructBuilding";
 
-    public static Run(creep: Creep) {
+export class Builder implements Role {
 
-        if ((creep.memory.task === 'harvest') && (creep.store.getFreeCapacity() === 0)) {
-            creep.memory.task = 'build';
-        }
+    public id: string = 'builder';
 
-        if ((creep.memory.task === 'build') && (creep.store[RESOURCE_ENERGY] === 0)) {
-            creep.memory.task = 'harvest';
-        }
+    public name: string = 'BLD-';
 
-        switch (creep.memory.task) {
-            case 'harvest':
-                const source = creep.pos.findClosestByPath(FIND_SOURCES);
+    public body: BodyPartConstant[] = [WORK, CARRY, MOVE];
 
-                if (source === null) {
-                    return;
-                }
-
-                if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(source, {visualizePathStyle: {stroke: '#ffaa00'}});
-                }
-                break;
-
-            case 'build':
-                const sites = creep.room.find(FIND_MY_CONSTRUCTION_SITES);
-
-                if (sites.length === 0) {
-                    return;
-                }
-
-                const targetSite = sites[0];
-
-                if (creep.build(targetSite) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(targetSite, {visualizePathStyle: {stroke: '#ffffff'}});
-                }
-                break;
-        }
-    }
+    public initialState: State = new ConstructBuilding();
 
 }

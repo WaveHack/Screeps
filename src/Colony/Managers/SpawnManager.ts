@@ -25,12 +25,7 @@ export class SpawnManager {
             const sites = spawn.room.find(FIND_MY_CONSTRUCTION_SITES);
 
             if (sites.length > 0) {
-                const newName = ('Builder' + Game.time);
-
-                if (spawn.spawnCreep([WORK, CARRY, MOVE], newName, {memory: {role: 'builder', task: 'harvest', states: []}}) === OK) {
-                    console.log(`INFO: Spawning new Builder: ${newName}`);
-                    return;
-                }
+                return this.SpawnCreep(new Builder());
             }
         }
 
