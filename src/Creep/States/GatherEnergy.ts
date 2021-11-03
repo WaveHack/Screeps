@@ -28,6 +28,14 @@ export class GatherEnergy implements State {
                 return StateManager.PopState(creep);
             }
 
+            const flag = Game.flags['Parking'];
+
+            if (flag !== null) {
+                if (!creep.pos.inRangeTo(flag, 1)) {
+                    creep.moveTo(Game.flags['Parking']);
+                }
+            }
+
             return;
             //return StateManager.PushState(creep, 'harvest_energy');
         }
