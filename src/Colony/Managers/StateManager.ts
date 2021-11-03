@@ -6,12 +6,14 @@ import {State} from "../../Creep/States/State";
 import {HarvestEnergy} from "../../Creep/States/HarvestEnergy";
 import {DeliverEnergy} from "../../Creep/States/DeliverEnergy";
 import {ConstructBuilding} from "../../Creep/States/ConstructBuilding";
+import {GatherEnergy} from "../../Creep/States/GatherEnergy";
 
 export class StateManager {
 
     private static availableStates: State[] = [
         new ConstructBuilding(),
         new DeliverEnergy(),
+        new GatherEnergy(),
         new HarvestEnergy(),
     ];
 
