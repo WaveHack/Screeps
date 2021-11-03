@@ -20,6 +20,7 @@ export class SpawnManager {
 
             if (this.spawn.spawnCreep([WORK, CARRY, MOVE], newName,  {memory: {role: 'harvester', task: 'harvest'}}) === OK) {
                 console.log(`Spawning new Harvester: ${newName}`);
+                return;
             }
         }
 
@@ -31,6 +32,7 @@ export class SpawnManager {
 
                 if (this.spawn.spawnCreep([WORK, CARRY, MOVE], newName, {memory: {role: 'builder', task: 'harvest'}}) === OK) {
                     console.log(`Spawning new Builder: ${newName}`);
+                    return;
                 }
             }
         }
@@ -40,6 +42,7 @@ export class SpawnManager {
 
             if (this.spawn.spawnCreep([WORK, CARRY, MOVE], newName, {memory: {role: 'upgrader', task: 'harvest'}}) === OK) {
                 console.log(`Spawning new Upgrader: ${newName}`);
+                return;
             }
         }
     }
