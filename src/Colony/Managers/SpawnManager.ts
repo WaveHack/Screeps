@@ -4,7 +4,7 @@ import {Upgrader} from "../../Creep/Roles/Upgrader";
 
 export class SpawnManager {
 
-    static SpawnCreeps(): void {
+    public static SpawnCreeps(): void {
         const spawn = Game.spawns['Spawn1'];
 
         if (spawn.spawning !== null) {

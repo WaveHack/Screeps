@@ -1,6 +1,6 @@
 export class MemoryManager {
 
-    static CleanupInactiveCreeps(): void {
+    public static CleanupInactiveCreeps(): void {
         for (const name in Memory.creeps) {
             if (!Game.creeps[name]) {
                 delete Memory.creeps[name];

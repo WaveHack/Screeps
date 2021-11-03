@@ -1,6 +1,6 @@
 export class Harvester {
 
-    static Run(creep: Creep) {
+    public static Run(creep: Creep) {
 
         if ((creep.memory.task === 'harvest') && (creep.store.getFreeCapacity() === 0)) {
             creep.memory.task = 'deliver';
