@@ -7,6 +7,7 @@ import {HarvestEnergy} from "../../Creep/States/HarvestEnergy";
 import {DeliverEnergy} from "../../Creep/States/DeliverEnergy";
 import {ConstructBuilding} from "../../Creep/States/ConstructBuilding";
 import {GatherEnergy} from "../../Creep/States/GatherEnergy";
+import {RepairStructure} from "../../Creep/States/RepairStructure";
 
 export class StateManager {
 
@@ -15,6 +16,7 @@ export class StateManager {
         new DeliverEnergy(),
         new GatherEnergy(),
         new HarvestEnergy(),
+        new RepairStructure(),
     ];
 
     private static statesById: { [key: string]: State } = {};
@@ -67,9 +69,6 @@ export class StateManager {
         }
 
         switch (creep.memory.role) {
-            case 'maintainer':
-                Maintainer.Run(creep);
-                break;
             case 'upgrader':
                 Upgrader.Run(creep);
                 break;

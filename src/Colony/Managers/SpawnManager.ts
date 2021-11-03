@@ -2,6 +2,7 @@ import {Builder} from "../../Creep/Roles/Builder";
 import {Upgrader} from "../../Creep/Roles/Upgrader";
 import {Role} from "../../Creep/Roles/Role";
 import {Harvester} from "../../Creep/Roles/Harvester";
+import {Maintainer} from "../../Creep/Roles/Maintainer";
 
 export class SpawnManager {
 
@@ -30,12 +31,7 @@ export class SpawnManager {
         }
 
         if (maintainers.length < 2) {
-            const newName = ('Maintainer' + Game.time);
-
-            if (spawn.spawnCreep([WORK, CARRY, MOVE], newName,  {memory: {role: 'maintainer', task: 'harvest', states: []}}) === OK) {
-                console.log(`INFO: Spawning new Maintainer: ${newName}`);
-                return;
-            }
+            return this.SpawnCreep(new Maintainer());
         }
 
         if (upgraders.length < 5) {
