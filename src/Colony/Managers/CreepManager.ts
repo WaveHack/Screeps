@@ -1,6 +1,6 @@
-import {Builder} from "../Roles/Builder";
-import {Harvester} from "../Roles/Harvester";
-import {Upgrader} from "../Roles/Upgrader";
+import {Builder} from "../../Creep/Roles/Builder";
+import {Harvester} from "../../Creep/Roles/Harvester";
+import {Upgrader} from "../../Creep/Roles/Upgrader";
 
 export class CreepManager {
 
